@@ -1,0 +1,3 @@
+include ':opencvLibray'
+include ':app'
+rootProject.name = "OpenCvDemo"
