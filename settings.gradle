@@ -1,3 +1,5 @@
+include ':XclChartDemo'
+include ':xclChartLibrary'
 include ':opencvLibray'
 include ':app'
 rootProject.name = "OpenCvDemo"
