@@ -32,6 +32,12 @@ public  class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, com.demo.xclcharts.MainActivity.class));
             }
         });
+        findViewById(R.id.demo_3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, com.huawei.codelabpush.MainActivity.class));
+            }
+        });
     }
 
 }
