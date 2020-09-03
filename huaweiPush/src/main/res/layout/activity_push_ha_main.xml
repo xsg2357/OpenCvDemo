@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Button
@@ -56,7 +55,6 @@
         android:id="@+id/btn_set_push"
         android:layout_width="wrap_content"
         android:layout_marginBottom="12dp"
-        android:theme="@style/AppTheme"
         android:layout_gravity="center"
         android:paddingStart="2dp"
         android:paddingEnd="2dp"
@@ -102,7 +100,6 @@
         android:id="@+id/btn_is_autoInit_enabled"
         android:layout_width="wrap_content"
         android:layout_marginBottom="12dp"
-        android:theme="@style/AppTheme"
         android:layout_gravity="center"
         android:paddingStart="2dp"
         android:paddingEnd="2dp"
@@ -133,7 +130,6 @@
         android:id="@+id/btn_generate_intent"
         android:layout_width="wrap_content"
         android:layout_marginBottom="12dp"
-        android:theme="@style/AppTheme"
         android:layout_gravity="center"
         android:paddingStart="2dp"
         android:paddingEnd="2dp"
@@ -148,7 +144,6 @@
         android:id="@+id/btn_action"
         android:layout_width="wrap_content"
         android:layout_marginBottom="12dp"
-        android:theme="@style/AppTheme"
         android:layout_gravity="center"
         android:paddingStart="2dp"
         android:paddingEnd="2dp"
