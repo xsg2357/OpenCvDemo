@@ -16,6 +16,25 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public  class HomeActivity extends AppCompatActivity {
 
+    private WaveView mWaveView2;
+    private WaveView mWaveView3;
+    private WaveView mWaveView4;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +57,16 @@ public  class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, com.huawei.codelabpush.MainActivity.class));
             }
         });
+
+        mWaveView2 =  findViewById(R.id.waveView2);
+        mWaveView3 =  findViewById(R.id.waveView3);
+        mWaveView4 =  findViewById(R.id.waveView4);
+
+
+        mWaveView2.start();
+        mWaveView3.start();
+        mWaveView4.start();
+
     }
 
 }
