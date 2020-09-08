@@ -63,9 +63,9 @@ public  class HomeActivity extends AppCompatActivity {
         mWaveView4 =  findViewById(R.id.waveView4);
 
 
-        mWaveView2.start();
-        mWaveView3.start();
-        mWaveView4.start();
+//        mWaveView2.start();
+//        mWaveView3.start();
+//        mWaveView4.start();
 
     }
 
