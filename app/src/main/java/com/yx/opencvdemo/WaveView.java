@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Region;
+import android.graphics.Shader;
 import android.graphics.SweepGradient;
 import android.os.Build;
 import android.os.Handler;
@@ -29,6 +30,16 @@ import java.util.regex.Pattern;
 
 public class WaveView extends View implements Runnable {
 
+
+//    Paint.ANTI_ALIAS_FLAG ：抗锯齿标志
+//    Paint.FILTER_BITMAP_FLAG : 使位图过滤的位掩码标志
+//    Paint.DITHER_FLAG : 使位图进行有利的抖动的位掩码标志
+//    Paint.UNDERLINE_TEXT_FLAG : 下划线
+//    Paint.STRIKE_THRU_TEXT_FLAG : 中划线
+//    Paint.FAKE_BOLD_TEXT_FLAG : 加粗
+//    Paint.LINEAR_TEXT_FLAG : 使文本平滑线性扩展的油漆标志
+//    Paint.SUBPIXEL_TEXT_FLAG : 使文本的亚像素定位的绘图标志
+//    Paint.EMBEDDED_BITMAP_TEXT_FLAG : 绘制文本时允许使用位图字体的绘图标志
     private static final int DEFAULT_WAVE_1_COLOR = 0x999bcee7;
     private static final int DEFAULT_WAVE_2_COLOR = 0x9958bae7;
     private static final int DEFAULT_WAVE_3_COLOR = 0x999bcee7;
@@ -79,23 +90,25 @@ public class WaveView extends View implements Runnable {
 
     public WaveView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.WaveView);
+        initAttrs(context.obtainStyledAttributes(attrs, R.styleable.WaveView));
+    }
+
+    private void initAttrs(TypedArray typedArray) {
+        TypedArray array = typedArray;
         initView(array);
     }
 
     public WaveView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.WaveView,
-                defStyleAttr, 0);
-        initView(array);
+        initAttrs(context.obtainStyledAttributes(attrs, R.styleable.WaveView,
+                defStyleAttr, 0));
     }
 
     @RequiresApi(21)
     public WaveView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.WaveView,
-                defStyleAttr, defStyleRes);
-        initView(array);
+        initAttrs(context.obtainStyledAttributes(attrs, R.styleable.WaveView,
+                defStyleAttr, defStyleRes));
     }
 
     private void initView(TypedArray array) {
@@ -249,7 +262,14 @@ public class WaveView extends View implements Runnable {
                 if (waveGradient1 != null && waveGradient1.length > 0) {
                     if (!TextUtils.isEmpty(value) && isPointNumber(value)) {
                         float valueF = Float.parseFloat(value);
-
+//                        CLAMP 如果着色器绘制超出其原始边界，则复制边颜色。
+//                        REPEAT 水平和垂直重复着色器的图像
+//                        MIRROR 水平和垂直重复着色器的图像，交替镜像图像，以便相邻图像始终接合
+                        LinearGradient linearGradient = new LinearGradient(
+                            width/2,height,width/2,height-height*valueF,waveGradient1,
+                                null, Shader.TileMode.CLAMP
+                        );
+                        mWavePaint1.setShader(linearGradient);
                     } else {
                         throw new RuntimeException("your value is error");
                     }
@@ -263,6 +283,11 @@ public class WaveView extends View implements Runnable {
                 if (waveGradient2 != null && waveGradient2.length > 0) {
                     if (!TextUtils.isEmpty(value) && isPointNumber(value)) {
                         float valueF = Float.parseFloat(value);
+                        LinearGradient linearGradient = new LinearGradient(
+                                width/2,height,width/2,height-height*valueF,waveGradient2,
+                                null, Shader.TileMode.CLAMP
+                        );
+                        mWavePaint2.setShader(linearGradient);
                     } else {
                         throw new RuntimeException("your value is error");
                     }
