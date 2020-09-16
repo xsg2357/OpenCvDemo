@@ -1,6 +1,7 @@
 package com.yx.opencvdemo;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
@@ -55,6 +56,12 @@ public  class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeActivity.this, com.huawei.codelabpush.MainActivity.class));
+            }
+        });
+        findViewById(R.id.demo_4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ProgressBarMainActivity.class));
             }
         });
 

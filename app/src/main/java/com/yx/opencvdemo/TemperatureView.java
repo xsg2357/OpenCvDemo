@@ -26,9 +26,11 @@ public class TemperatureView extends View {
     private Paint mTopArcPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint mWaterPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private int arcWidth = 8; // dp
-    private int distanceOut2Inner = 5;
     private Path path = new Path();
     private int verticalRangeNum = 8;
+    private float outerScalePx = 0.3f;
+    private float outerScaleBottomPx = 2f;
+    private float waterScaleWidth = 5f;
 
     public TemperatureView(Context context) {
         super(context);
@@ -71,6 +73,7 @@ public class TemperatureView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+//        setLayerType(View.LAYER_TYPE_SOFTWARE);
         int width = getWidth();
         int height = getHeight();
         // 外层圆环
@@ -107,15 +110,15 @@ public class TemperatureView extends View {
 
         // 帽帽 -半圆 5-7
         RectF rectFTop = new RectF();
-        float rfLeft = centerTempX - dp2px(arcWidth) + dp2px(5f);
-        float rfRight = centerTempX + dp2px(arcWidth) - dp2px(5f);
+        float rfLeft = centerTempX - dp2px(arcWidth) + dp2px(waterScaleWidth);
+        float rfRight = centerTempX + dp2px(arcWidth) - dp2px(waterScaleWidth);
 
         rectFTop.set(centerTempX - dp2px(arcWidth), dp2px(10), centerTempX + dp2px(arcWidth), dp2px(20));
         canvas.drawArc(rectFTop, 0, -180, true, mTopArcPaint);
 
         // 水银
         path.reset();
-        float rTop = dp2px(16);
+        float rTop = dp2px(15);
         float rBottom = centerHorTop + dp2px(arcWidth) - 5;
         RectF rectFWater = new RectF();
         rectFWater.set(rfLeft, rTop, rfRight, rBottom);
@@ -134,7 +137,7 @@ public class TemperatureView extends View {
             if (i == 0) {
                 rectFRange.set(oRectLeft, rTop, oRectRight, rangeHeight);
             } else {
-                rectFRange.set(oRectLeft, temp + dp2px(0.5f), oRectRight, rangeHeight);
+                rectFRange.set(oRectLeft, temp + dp2px(outerScalePx), oRectRight, rangeHeight);
             }
             float degreeScale = avgHeight / 5;
             if (i != verticalRangeNum - 1) {
@@ -144,7 +147,7 @@ public class TemperatureView extends View {
                         dePath.reset();
                         RectF rectFScale = new RectF();
                         float vTop = rTop + avgHeight * i + degreeScale * (j + 1) - 2f;
-                        float vBottom = vTop + 2f;
+                        float vBottom = vTop + outerScaleBottomPx;
                         rectFScale.set(oRectLeft, vTop, oRectRight - 8, vBottom);
                         dePath.addRoundRect(rectFScale, 3, 3, Path.Direction.CCW);
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -170,7 +173,7 @@ public class TemperatureView extends View {
             if (i == 0) {
                 rectFRange.set(oRectRightLeft, rTop, oRectRightRight, rangeHeight);
             } else {
-                rectFRange.set(oRectRightLeft, tempRight + dp2px(0.5f), oRectRightRight, rangeHeight);
+                rectFRange.set(oRectRightLeft, tempRight + dp2px(outerScalePx), oRectRightRight, rangeHeight);
             }
             float degreeScale = avgHeight / 5;
             if (i != verticalRangeNum - 1) {
@@ -180,7 +183,7 @@ public class TemperatureView extends View {
                         dePath.reset();
                         RectF rectFScale = new RectF();
                         float vTop = rTop + avgHeight * i + degreeScale * (j + 1) - 1f;
-                        float vBottom = vTop + 2f;
+                        float vBottom = vTop + outerScaleBottomPx;
                         rectFScale.set(oRectRightLeft+8, vTop, oRectRightRight , vBottom);
                         dePath.addRoundRect(rectFScale, 3, 3, Path.Direction.CW);
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
