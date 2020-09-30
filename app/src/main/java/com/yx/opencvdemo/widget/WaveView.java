@@ -1,4 +1,4 @@
-package com.yx.opencvdemo;
+package com.yx.opencvdemo.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -20,6 +20,8 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+
+import com.yx.opencvdemo.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

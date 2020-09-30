@@ -1,4 +1,4 @@
-package com.yx.opencvdemo;
+package com.yx.opencvdemo.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;

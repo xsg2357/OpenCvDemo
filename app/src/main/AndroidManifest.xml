@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".MainActivity"/>
         <activity android:name=".ProgressBarMainActivity"/>
+        <activity android:name=".DepartmentCustomViewActivity"/>
+        <activity android:name=".sqlite_room.ui.RoomTestActivity"/>
     </application>
 
 </manifest>

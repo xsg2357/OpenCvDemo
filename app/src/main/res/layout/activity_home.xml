@@ -42,60 +42,31 @@
         android:background="@android:color/white"
         android:layout_height="wrap_content"/>
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/demo_5"
+        android:layout_marginTop="0.5dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@android:color/holo_red_dark"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:textSize="14sp"
+        android:text="CustomView"
+        android:padding="15dp"
+        android:background="@android:color/white"
+        android:layout_height="wrap_content"/>
 
 
-        <com.yx.opencvdemo.WaveView
-            android:id="@+id/waveView4"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            app:isCircle="true"
-            app:period="2"
-            app:waveHeightPercent="0.3"
-            app:waveRange="20dp"
-            app:waveSpeed="10"
-            app:waveStrokeWidth="3dp"/>
-
-        <com.yx.opencvdemo.TemperatureView
-            android:layerType="hardware"
-            android:layout_width="100dp"
-            android:layout_height="200dp"/>
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/ll_wave"
+    <TextView
+        android:id="@+id/demo_6"
+        android:layout_marginTop="0.5dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:textSize="14sp"
+        android:text="Sqlite_Room"
+        android:padding="15dp"
+        android:background="@android:color/white"
+        android:layout_height="wrap_content"/>
 
-        <com.yx.opencvdemo.WaveView
-            android:id="@+id/waveView3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
 
-        <com.yx.opencvdemo.WaveView
-            android:id="@+id/waveView2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:isCircle="false"
-            app:period="2"
-            app:waveHeightPercent="0.8"
-            app:waveRange="10dp"
-            app:waveSpeed="5"
-            app:waveStrokeWidth="3dp"/>
 
-    </LinearLayout>
+
 
 
 

@@ -1,11 +1,12 @@
 package com.yx.opencvdemo;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.yx.opencvdemo.sqlite_room.ui.RoomTestActivity;
 
 /**
  * *******************************************
@@ -17,9 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public  class HomeActivity extends AppCompatActivity {
 
-    private WaveView mWaveView2;
-    private WaveView mWaveView3;
-    private WaveView mWaveView4;
+
 
     @Override
     protected void onResume() {
@@ -64,15 +63,20 @@ public  class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, ProgressBarMainActivity.class));
             }
         });
+        findViewById(R.id.demo_5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, DepartmentCustomViewActivity.class));
+            }
+        });
+        findViewById(R.id.demo_6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, RoomTestActivity.class));
+            }
+        });
 
-        mWaveView2 =  findViewById(R.id.waveView2);
-        mWaveView3 =  findViewById(R.id.waveView3);
-        mWaveView4 =  findViewById(R.id.waveView4);
 
-
-//        mWaveView2.start();
-//        mWaveView3.start();
-//        mWaveView4.start();
 
     }
 
